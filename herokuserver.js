@@ -14,7 +14,7 @@ console.log("process env url is " + process.env.URL);
 console.log("Webhook key is " + webhookKey);
 // Express middleware to enforce security using the Webhook Key
 function validateWebhookRequest(req, res, next) {
-  if (req.get('X-Parse-Webhook-Key') !== webhookKey) return errorResponse(res, 'Unauthorized Request.');
+  if (req.get('X-Parse-Webhook-Key') !== webhookKey) return errorResponse(res, 'nnnnng!');
   next();
 }
 

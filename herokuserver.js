@@ -22,6 +22,7 @@ function validateWebhookRequest(req, res, next) {
 function inflateParseObject(req, res, next) {
   var object = req.body.object;
   var className = object.className;
+  console.log("className is "+className);
   var parseObject = new Parse.Object(className);
   parseObject._finishFetch(object);
   req.body.object = parseObject;

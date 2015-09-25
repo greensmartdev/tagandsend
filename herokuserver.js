@@ -4,11 +4,14 @@
 var http = require('http'),
     express = require('express'),
     bodyParser = require('body-parser'),
+    //ParseCloud = require('parse-cloud-express'),
+    //Parse = ParseCloud.Parse;
     Parse = require('parse').Parse;
 
 // Make sure to set your Webhook key via heroku config set
 var webhookKey = process.env.WEBHOOK_KEY;
-
+console.log("process env url is " + process.env.URL);
+console.log("Webhook key is " + webhookKey);
 // Express middleware to enforce security using the Webhook Key
 function validateWebhookRequest(req, res, next) {
   if (req.get('X-Parse-Webhook-Key') !== webhookKey) return errorResponse(res, 'Unauthorized Request.');
@@ -47,7 +50,7 @@ app.use(jsonParser);
 
 app.post('/success', inflateParseObject, function(req, res) {
   var requestData = req.body;
-  requestData.object.set('extra', 'fizzbuzz');
+  //requestData.object.set('extra', 'fizzbuzz');
   successResponse(res, requestData.object);
 });
 

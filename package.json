@@ -28,5 +28,6 @@
   "license": "MIT",
   "devDependencies": {
     "body-parser": "^1.14.0"
-  }
+  },
+  "license": "MIT"
 }

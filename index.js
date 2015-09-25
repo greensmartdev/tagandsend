@@ -27,7 +27,6 @@ app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 
 
-
 //app.post('webhook/url', function (request, response) {
 //  console.log(request.body); // body contains the JSON data
   
@@ -35,7 +34,6 @@ app.listen(app.get('port'), function() {
   
 //  response.send(204);
 //});
-
 
 });
 

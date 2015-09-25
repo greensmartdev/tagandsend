@@ -2,9 +2,9 @@
   "name": "tagandsend",
   "version": "0.1.5",
   "description": "Node.js app using Express to process images",
-  "main": "index.js",
+  "main": "herokuserver.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node herokuserver.js"
   },
   "dependencies": {
     "canvas": "^1.2.7",

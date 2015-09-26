@@ -19,10 +19,10 @@ var webhookKey = process.env.WEBHOOK_KEY;
 console.log("process env url is " + process.env.URL);
 console.log("Webhook key is " + webhookKey);
 // Express middleware to enforce security using the Webhook Key
-function validateWebhookRequest(req, res, next) {
-  if (req.get('X-Parse-Webhook-Key') !== webhookKey) return errorResponse(res, 'nnnnng!');
-  next();
-}
+//function validateWebhookRequest(req, res, next) {
+//  if (req.get('X-Parse-Webhook-Key') !== webhookKey) return errorResponse(res, 'nnnnng!');
+//  next();
+//}
 
 
 // Parse middleware to inflate a beforeSave object to a Parse.Object
@@ -48,7 +48,7 @@ function errorResponse(res, message) {
 
 var jsonParser = bodyParser.json();
 
-app.use(validateWebhookRequest);
+//app.use(validateWebhookRequest);
 app.use(jsonParser);
     // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));

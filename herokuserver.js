@@ -1,5 +1,11 @@
 // Parse Cloud Code Webhooks example for Express JS on Heroku
 
+var express = require('express');
+var app = express();
+//app.use(express.bodyParser());
+
+var bodyParser = require('body-parser');
+
 // Require Node Modules
 var http = require('http'),
     express = require('express'),
@@ -17,6 +23,7 @@ function validateWebhookRequest(req, res, next) {
   if (req.get('X-Parse-Webhook-Key') !== webhookKey) return errorResponse(res, 'nnnnng!');
   next();
 }
+
 
 // Parse middleware to inflate a beforeSave object to a Parse.Object
 function inflateParseObject(req, res, next) {
@@ -39,15 +46,26 @@ function errorResponse(res, message) {
   res.status(200).send({ "error" : message });
 }
 
-var app = express();
 var jsonParser = bodyParser.json();
 
 app.use(validateWebhookRequest);
 app.use(jsonParser);
+    // parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 /*
  * Define routes here
  */
+
+
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+
+app.get('/', function(request, response) {
+  response.render('pages/index');
+});
+
 
 app.post('/success', inflateParseObject, function(req, res) {
   var requestData = req.body;

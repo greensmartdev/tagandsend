@@ -29,7 +29,7 @@ console.log("Webhook key is " + webhookKey);
 function inflateParseObject(req, res, next) {
   var object = req.body.object;
   var className = object.className;
-  console.log("className is "+className);
+  console.log("className is really "+className);
   var parseObject = new Parse.Object(className);
   parseObject._finishFetch(object);
   req.body.object = parseObject;
@@ -63,12 +63,14 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
+  console.log("In app get!");
   response.render('pages/index');
 });
 
 
 app.post('/success', inflateParseObject, function(req, res) {
   var requestData = req.body;
+  console.log("In app post success!");
   //requestData.object.set('extra', 'fizzbuzz');
   successResponse(res, requestData.object);
 });
